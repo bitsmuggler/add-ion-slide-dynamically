@@ -1,20 +1,48 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-buttons>
+      <ion-button color="primary" (click)="back()">
+        <ion-icon slot="icon-only" ios="arrow-back-outline" md="arrow-back-outline"></ion-icon>
+      </ion-button>
+      <ion-button color="primary" (click)="forward()">
+        <ion-icon slot="icon-only" ios="arrow-forward-outline" md="arrow-forward-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
     <ion-title>
-      Blank
+      Add slides demo
     </ion-title>
+    <ion-buttons slot="primary">
+      <ion-button color="secondary" (click)="addComponent(componentToAdd)">
+        <ion-icon slot="icon-only" ios="add-outline" md="add-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-slides #slider>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+    <ion-slide>
+      <div class="slide">
+        <p>The <b>ionic conference app</b> is a practical preview of the ionic framework in action, and a demonstration of proper code use.</p>
+      </div>
+    </ion-slide>
+
+    <ion-slide>
+      <p><b>Ionic Framework</b> is an open source SDK that enables developers to build high quality mobile apps with web technologies like HTML, CSS, and JavaScript.</p>
+    </ion-slide>
+
+    <ng-container #slides>
+    </ng-container>
+
+    <ion-slide>
+      <p>This is the <b>last</b> slide.</p>
+    </ion-slide>
+
+    <ng-template #slide let-index='index'>
+      <ion-slide>
+        <app-component-to-add [index]="index"></app-component-to-add>
+      </ion-slide>
+    </ng-template>
+  </ion-slides>
 </ion-content>
